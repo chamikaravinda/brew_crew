@@ -1,4 +1,5 @@
 import 'package:brewcrew/services/auth.dart';
+import 'package:brewcrew/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:brewcrew/shared/constants.dart';
 
@@ -16,6 +17,8 @@ class _SignInState extends State<SignIn> {
 
   final AuthService _authService = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading =false;
+
 
   //text filed state
   String email = '';
@@ -24,7 +27,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
@@ -77,10 +80,12 @@ class _SignInState extends State<SignIn> {
                 ),
                 onPressed: () async {
                   if(_formKey.currentState.validate()){
+                    setState(() =>loading=true);
                     dynamic result = await _authService.signInWithEmailAndPassword(email, password);
                     if(result == null){
                       setState(() {
                         error ='Wrong email or password';
+                        loading = false;
                       });
                     }
                   }

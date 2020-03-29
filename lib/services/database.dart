@@ -22,7 +22,7 @@ class DatabaseService{
     return snapshot.documents.map((doc){
       return Brew(
         name: doc.data['name'] ?? '',
-        strength: doc.data['strength'] ?? 0,
+        strength: doc.data['stregth'] ?? 0,
         suger: doc.data['sugers'] ?? '0',
       );
     }).toList();

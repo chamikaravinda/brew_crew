@@ -34,7 +34,7 @@ class DatabaseService{
       uid: uid,
       name: snapshot.data['name'],
       sugers: snapshot.data['sugers'],
-      strength: snapshot.data['strength']
+      strength: snapshot.data['stregth']
     );
   }
 

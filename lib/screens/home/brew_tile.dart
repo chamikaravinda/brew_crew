@@ -14,10 +14,11 @@ class BrewTile extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             radius: 25.0,
-            backgroundColor: Colors.brown[brew.strength ?? 100],
+            backgroundColor: Colors.brown[brew.strength??100],
           ),
           title: Text(brew.name),
-          subtitle: Text('Takes ${brew.suger} sugar(s)')
+          subtitle: Text('Takes ${brew.suger} sugar(s)'),
+          onTap: (){},
         ),
       ),
     );
